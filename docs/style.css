@@ -54,17 +54,28 @@ img {
 }
 
 .bodyText {
-    padding: 1rem;
+    padding: 1rem 4rem;
     text-align: justify;
+    font-size: 1.1em;
+
+}
+
+ul, ol {
+    padding: 1rem 4rem;
+    font-size: 1.1em;
+}
+
+a {
+    color: black;
 }
 
 .codeBlock {
     background: #ddd;
-    padding: 2rem;
-    margin: 2rem;
+    padding: 1rem;
+    margin: 1rem 5rem;
     border-radius: .5rem;
     border: solid 2px #aaa;
     font-family: monospace;
-    font-size: 1.25em;
+    font-size: 1.4em;
     font-weight: bold;
 }

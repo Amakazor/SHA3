@@ -31,7 +31,7 @@
         </section>
         <section>
             <h2 class="sectionTitle">
-                Funcjce z rodziny SHA-3
+                Funkcje z rodziny SHA-3
             </h2>
             <p class="bodyText">
                 W projekcie zostały zaimplementowane cztery podstawowe funkcje z rodziny SHA-3:
@@ -66,7 +66,7 @@
                 </ol>
                 <span class="imageWrapper">
                     <img src="SHA1.PNG">
-                    <p class="caption">Ilustacja przedstawiająca konstrukcję gąbki</p>
+                    <p class="caption">Ilustracja przedstawiająca konstrukcję gąbki</p>
                 </span>
             </p>
         </section>
@@ -79,7 +79,7 @@
                 Wielkość rejestru stanu zależy od wielkości określonej jako parametr algorytmu Keccak-f[b] o nazwie b, który dla Keccak-f[1600] wynosi 1600 bitów. 
             </p>
             <p class="bodyText">
-                Aby skonstruować rejest stanu należy wyznaczyć parametr w. Należy to zrobić w następujący sposób:
+                Aby skonstruować rejestr stanu należy wyznaczyć parametr w. Należy to zrobić w następujący sposób:
                 <p class="codeBlock">w = b / 25</p>
                 co oznacza, że w przypadku b równego 1600, parametr w wynosi 64.
                 Następnym krokiem jest stworzenie trójwymiarowej mecierzy, opisywanej trzema wielkościami: [x, y, z], gdzie
@@ -92,7 +92,7 @@
                 Matryca ta jest rejestrem stanu.
                 <span class="imageWrapper">
                     <img src="SHA2.PNG">
-                    <p class="caption">Rejest stanu w konstrukcji gąbki</p>
+                    <p class="caption">Rejestr stanu w konstrukcji gąbki</p>
                 </span>
             </p>
         </section>
@@ -191,7 +191,7 @@
             <p class="bodyText">
                 Funckja π powoduje zamianę linii miejscami, zgodnie ze wzorem:
                 <p class="codeBlock">A′[x, y, z] = A[(x + 3y) modulo 5, x, z]</p>
-                gdzie A to rejestr stanu, a A′ to wynikowy rejest stanu.
+                gdzie A to rejestr stanu, a A′ to wynikowy rejestr stanu.
                 <span class="imageWrapper">
                     <img src="SHA7.PNG">
                     <p class="caption">Ilustracja obrazująca przesunięcia linii w funckji π</p>
@@ -240,7 +240,7 @@
             <h2 class="sectionTitle">
                 Wykonana aplikacja zawierająca wdrożenie SHA3
             </h2>
-            <p>
+            <p class="bodyText">
                 Jako zadanie projektowe wykonano wdrożenie rodziny funkcji hashujących SHA-3 oraz przedstawiono przykładowe ich zastosowania w aplikacji konsolowej napisanej w języku C# na platformę .NET5 (same funkcje SHA3 zostały stworzone na platformie .NET Standard 2.0).
                 Aplikacja posiada następujące funkcjonalności:
                 <ul>
@@ -256,7 +256,7 @@
             <h2 class="sectionTitle">
                 Źródła
             </h2>
-            <p>
+            <p class="bodyText">
                 W celu implementacji oraz przetestowania rodziny funkcji SHA3 posłużono się:
                 <ul>
                     <li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf">FEDERAL INFORMATION PROCESSING STANDARDS PUBLICATION - SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions</a></li>
