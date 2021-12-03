@@ -93,7 +93,7 @@
             <p class="codeBlock">x = 5</p>
             <p class="codeBlock">y = 5</p>
             <p class="codeBlock">z = w</p>
-            <p class="bodyText"></p>
+            <p class="bodyText">
                 więc:
             </p>
             <p class="codeBlock">x * y * z = b</p>
@@ -123,7 +123,7 @@
                 Gdzie przyjmując, że jako p określimy długość fragmentu w bitach, a m wymaganą długość fragmentu w bitach (136 * 8 dla SHA3-256):
             </p>
             <p class="codeBlock">n = m - (p + 2)</p>
-            <p class="bodyText"><
+            <p class="bodyText">
                 Co spowoduje, że długość ostatniego bloku po uzupełnieniu będzie wynosiła dokładnie tyle, ile jest wymagane.
             </p>
         </section>
@@ -135,7 +135,7 @@
                 Wchłanianie to proces polegający na wykonaniu dla każdego bloku następujących czynności:
             </p>
             <ol>
-                <li>stworzenie tymczasowej macierzy o takiej samej strukturze jak rejestr stanu konstrukcji gąbki, wczytaniu do niej bitów bloku, w sposób taki że dla każdej wartości y iterujemy koleno każdą wartość x, a dla każdej wartości x iterujemy wartość z, wczytując do komórek macierzy kolejne bity bloku.</li>
+                <li>Stworzenie tymczasowej macierzy o takiej samej strukturze jak rejestr stanu konstrukcji gąbki, wczytaniu do niej bitów bloku, w sposób taki że dla każdej wartości y iterujemy koleno każdą wartość x, a dla każdej wartości x iterujemy wartość z, wczytując do komórek macierzy kolejne bity bloku.</li>
                 <li>Wykonanie operacji XOR na każdej komórce rejestru stanu struktury gąbki i macierzy tymczasowej, przypisując wynik operacji do komórki rejestru stanu</li>
                 <li>Dla nowego stanu wykonanie n krotnie (dla Keccak-f[1600] 24 krotnie) funkcji mieszającej dane (omówionej poniżej)</li>
             </ol>
