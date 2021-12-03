@@ -35,21 +35,25 @@
             </h2>
             <p class="bodyText">
                 W projekcie zostały zaimplementowane cztery podstawowe funkcje z rodziny SHA-3:
+            </p>
                 <ul>
                     <li>SHA3-224</li>
                     <li>SHA3-256</li>
                     <li>SHA3-384</li>
                     <li>SHA3-512</li>
                 </ul>
+            <p class="bodyText">
                 Wartość po myślniku w nazwach tych funkcji oznacza wielkość wyjścia.
                 Funckje posiadają odwrotną relację długości bloku wejściowego do długości wyjścia, mianowicie:
+            </p>
                 <ul>
                     <li>SHA3-224: 144B</li>
                     <li>SHA3-256: 136B</li>
                     <li>SHA3-384: 104B</li>
                     <li>SHA3-512: 72B</li>
                 </ul>
-                Czego bezpośrednim wynikiem jest trend do tego, że funcje o większej długości wyjścia wykonują funkcję mieszającą więcej razy, a więc stopień zmieszania danych jest znacznie większy.
+            <p class="bodyText">
+                Czego bezpośrednim wynikiem jest trend do tego, że funkcje o większej długości wyjścia wykonują funkcję mieszającą więcej razy, a więc stopień zmieszania danych jest znacznie większy.
             </p>
         </section>
         <section>
@@ -58,17 +62,17 @@
             </h2>
             <p class="bodyText">
                 Konstrukcja gąbki używana w w algorytmie Keccak jest algorytmem składającym się z czterech etapów:
-                <ol>
-                    <li>Przyjęcie danych, dopełnienie ich do wielkości bloku (pad), podział na bloki</li>
-                    <li>Wchłanianie (absorbing) - wielokrotne przetworzenie każdego kolejnego bloku odpowiednią funkcją mieszającą dane, a następnie dodawanie ich do rejestru stanu gąbki</li>
-                    <li>Wyciskanie (squeezing)- przygotowywanie danych wyjściowych na podstawie rejestru stanu, poprzez cięcie go na fragmenty, mieszanie ich</li>
-                    <li>Przycięcie (trunc) oraz zwrócenie gotowego skrótu</li>
-                </ol>
-                <span class="imageWrapper">
-                    <img src="SHA1.PNG">
-                    <p class="caption">Ilustracja przedstawiająca konstrukcję gąbki</p>
-                </span>
             </p>
+            <ol>
+                <li>Przyjęcie danych, dopełnienie ich do wielkości bloku (pad), podział na bloki</li>
+                <li>Wchłanianie (absorbing) - wielokrotne przetworzenie każdego kolejnego bloku odpowiednią funkcją mieszającą dane, a następnie dodawanie ich do rejestru stanu gąbki</li>
+                <li>Wyciskanie (squeezing)- przygotowywanie danych wyjściowych na podstawie rejestru stanu, poprzez cięcie go na fragmenty, mieszanie ich</li>
+                <li>Przycięcie (trunc) oraz zwrócenie gotowego skrótu</li>
+            </ol>
+            <span class="imageWrapper">
+                <img src="SHA1.PNG">
+                <p class="caption">Ilustracja przedstawiająca konstrukcję gąbki</p>
+            </span>
         </section>
         <section>
             <h2 class="sectionTitle">
@@ -80,21 +84,27 @@
             </p>
             <p class="bodyText">
                 Aby skonstruować rejestr stanu należy wyznaczyć parametr w. Należy to zrobić w następujący sposób:
-                <p class="codeBlock">w = b / 25</p>
+            </p>
+            <p class="codeBlock">w = b / 25</p>
+            <p class="bodyText">
                 co oznacza, że w przypadku b równego 1600, parametr w wynosi 64.
                 Następnym krokiem jest stworzenie trójwymiarowej mecierzy, opisywanej trzema wielkościami: [x, y, z], gdzie
-                <p class="codeBlock">x = 5</p>
-                <p class="codeBlock">y = 5</p>
-                <p class="codeBlock">z = w</p>
+            </p>
+            <p class="codeBlock">x = 5</p>
+            <p class="codeBlock">y = 5</p>
+            <p class="codeBlock">z = w</p>
+            <p class="bodyText"></p>
                 więc:
-                <p class="codeBlock">x * y * z = b</p>
+            </p>
+            <p class="codeBlock">x * y * z = b</p>
+            <p class="bodyText">
                 co oznacza że dla Keccak-f[1600] ta matryca będzie miała wielkości [5, 5, 64].
                 Matryca ta jest rejestrem stanu.
-                <span class="imageWrapper">
-                    <img src="SHA2.PNG">
-                    <p class="caption">Rejestr stanu w konstrukcji gąbki</p>
-                </span>
             </p>
+            <span class="imageWrapper">
+                <img src="SHA2.PNG">
+                <p class="caption">Rejestr stanu w konstrukcji gąbki</p>
+            </span>
         </section>
         <section>
             <h2 class="sectionTitle">
@@ -103,13 +113,17 @@
             <p class="bodyText">
                 Pierwszym krokiem w pracy struktury gąbki jest podzielenie wiadomości wejściowej na bloki, co odbywa się poprzez pocięcie wiadomości na fragmenty o maksymalnej długości zależnej od konkretnej funkcji z rodziny SHA-3 (opisano powyżej), 
                 na przykład dla funkcji SHA3-256 są to fragmenty o długości 136 bajtów. Następnym krokiem jest sprawdzenie, czy ostatni fragment ma dokładnie wymaganą długość, a jeśli nie, to uzupełnie go z wykorzystaniem algorytmu PAD101, którego nazwa pochodzi od sposobu generowania uzupełniającego ciągu znaków:
-                <ol>
-                    <li>1 bit o wartości 1</li>
-                    <li>n bitów o wartości 0</li>
-                    <li>1 bit o wartości 1</li>
-                </ol>
+            </p>
+            <ol>
+                <li>1 bit o wartości 1</li>
+                <li>n bitów o wartości 0</li>
+                <li>1 bit o wartości 1</li>
+            </ol>
+            <p class="bodyText">
                 Gdzie przyjmując, że jako p określimy długość fragmentu w bitach, a m wymaganą długość fragmentu w bitach (136 * 8 dla SHA3-256):
-                <p class="codeBlock">n = m - (p + 2)</p>
+            </p>
+            <p class="codeBlock">n = m - (p + 2)</p>
+            <p class="bodyText"><
                 Co spowoduje, że długość ostatniego bloku po uzupełnieniu będzie wynosiła dokładnie tyle, ile jest wymagane.
             </p>
         </section>
@@ -119,34 +133,34 @@
             </h2>
             <p class="bodyText">
                 Wchłanianie to proces polegający na wykonaniu dla każdego bloku następujących czynności:
-                <ol>
-                    <li>stworzenie tymczasowej macierzy o takiej samej strukturze jak rejestr stanu konstrukcji gąbki, wczytaniu do niej bitów bloku, w sposób taki że dla każdej wartości y iterujemy koleno każdą wartość x, a dla każdej wartości x iterujemy wartość z, wczytując do komórek macierzy kolejne bity bloku.</li>
-                    <li>Wykonanie operacji XOR na każdej komórce rejestru stanu struktury gąbki i macierzy tymczasowej, przypisując wynik operacji do komórki rejestru stanu</li>
-                    <li>Dla nowego stanu wykonanie n krotnie (dla Keccak-f[1600] 24 krotnie) funkcji mieszającej dane (omówionej poniżej)</li>
-                </ol>
-                <span class="imageWrapper">
-                    <img src="SHA3.PNG">
-                    <p class="caption">Wczytywanie bloku do macierzy tymczasowej, gdzie A to macierz tymczasowa, a S to blok danych</p>
-                </span> 
             </p>
+            <ol>
+                <li>stworzenie tymczasowej macierzy o takiej samej strukturze jak rejestr stanu konstrukcji gąbki, wczytaniu do niej bitów bloku, w sposób taki że dla każdej wartości y iterujemy koleno każdą wartość x, a dla każdej wartości x iterujemy wartość z, wczytując do komórek macierzy kolejne bity bloku.</li>
+                <li>Wykonanie operacji XOR na każdej komórce rejestru stanu struktury gąbki i macierzy tymczasowej, przypisując wynik operacji do komórki rejestru stanu</li>
+                <li>Dla nowego stanu wykonanie n krotnie (dla Keccak-f[1600] 24 krotnie) funkcji mieszającej dane (omówionej poniżej)</li>
+            </ol>
+            <span class="imageWrapper">
+                <img src="SHA3.PNG">
+                <p class="caption">Wczytywanie bloku do macierzy tymczasowej, gdzie A to macierz tymczasowa, a S to blok danych</p>
+            </span> 
         </section>
         <section>
             <h2 class="sectionTitle">
-                Funckja mieszająca dane
+                Funkcja mieszająca dane
             </h2>
             <p class="bodyText">
                 Funckja mieszająca dane składa się z 5 operacji, z których każda kolejna wykorzystuje stan wytworzony w wyniku działania poprzedniej.
             </p>
             <p class="bodyText">
                 Nazwy kolejnych operacji to:
-                <ol>
-                    <li>θ - THETA</li>
-                    <li>ρ - RHO</li>
-                    <li>π - PI</li>
-                    <li>χ - CHI</li>
-                    <li>ι - IOTA</li>
-                </ol>
             </p>
+            <ol>
+                <li>θ - THETA</li>
+                <li>ρ - RHO</li>
+                <li>π - PI</li>
+                <li>χ - CHI</li>
+                <li>ι - IOTA</li>
+            </ol>
         </section>
         <section>
             <h2 class="sectionTitle">
@@ -154,16 +168,16 @@
             </h2>
             <p class="bodyText">
                 Funckja θ dla każdego bitu stanu wykonuje operację XOR z parzystościami (sumami operacji XOR) odpowiednich kolumn (bitów o takich samych koordynach x oraz z w rejestrze stanu). Kolejnymi krokami tej opracji są:
-                <ol>
-                    <li>Wyznacznie parzystości każdej kolumny</li>
-                    <li>Wyznaczenie XOR parzystości dwóch kolumn dla odpowiedniej kolymn [x, z], takich że pierwsza kolumna posiada koordynaty [x - 1 modulo 5, z] a druga [x + 1 modulo 5, z - 1 modulo 24]</li>
-                    <li>Dla każdego bitu każdej kolumny wykonanie operacji XOR z XORem parzystości odpowiednich mu kolumn i zapisanie wyniku jako nowej wartości bitu</li>
-                </ol>
-                <span class="imageWrapper">
-                    <img src="SHA4.PNG">
-                    <p class="caption">Ilustracja operacji θ dla pojedynczego bitu</p>
-                </span>
             </p>
+            <ol>
+                <li>Wyznacznie parzystości każdej kolumny</li>
+                <li>Wyznaczenie XOR parzystości dwóch kolumn dla odpowiedniej kolymn [x, z], takich że pierwsza kolumna posiada koordynaty [x - 1 modulo 5, z] a druga [x + 1 modulo 5, z - 1 modulo 24]</li>
+                <li>Dla każdego bitu każdej kolumny wykonanie operacji XOR z XORem parzystości odpowiednich mu kolumn i zapisanie wyniku jako nowej wartości bitu</li>
+            </ol>
+            <span class="imageWrapper">
+                <img src="SHA4.PNG">
+                <p class="caption">Ilustracja operacji θ dla pojedynczego bitu</p>
+            </span>
         </section>
         <section>
             <h2 class="sectionTitle">
@@ -171,18 +185,20 @@
             </h2>
             <p class="bodyText">
                 Funckja ρ przesuwa z zapętleniem bity każdej linii (bitów o takich samych koordynach x oraz y w rejestrze stanu) rejestru stanu o określoną wartość w kierunku +z wyznaczaną z wzoru:
-                <p class="codeBlock">m = ((t + 1)(t + 2)/2)</p>
+            </p>
+            <p class="codeBlock">m = ((t + 1)(t + 2)/2)</p>
+            <p class="bodyText">
                 gdzie m to wartość przesusunięcia, a t to indeks przesuwanej linii.
                 Z przesunięcia wyłączona jest środkowa linia rejestru stanu.
-                <span class="imageWrapper">
-                    <img src="SHA5.PNG">
-                    <p class="caption">Wartości przesunięc linii dla Keccak-f[1600]</p>
-                </span>
-                <span class="imageWrapper">
-                    <img src="SHA6.PNG">
-                    <p class="caption">Ilustracja przykładowych przesunięć linii</p>
-                </span>
             </p>
+            <span class="imageWrapper">
+                <img src="SHA5.PNG">
+                <p class="caption">Wartości przesunięc linii dla Keccak-f[1600]</p>
+            </span>
+            <span class="imageWrapper">
+                <img src="SHA6.PNG">
+                <p class="caption">Ilustracja przykładowych przesunięć linii</p>
+            </span>
         </section>
         <section>
             <h2 class="sectionTitle">
@@ -190,13 +206,15 @@
             </h2>
             <p class="bodyText">
                 Funckja π powoduje zamianę linii miejscami, zgodnie ze wzorem:
-                <p class="codeBlock">A′[x, y, z] = A[(x + 3y) modulo 5, x, z]</p>
-                gdzie A to rejestr stanu, a A′ to wynikowy rejestr stanu.
-                <span class="imageWrapper">
-                    <img src="SHA7.PNG">
-                    <p class="caption">Ilustracja obrazująca przesunięcia linii w funckji π</p>
-                </span>
             </p>
+            <p class="codeBlock">A′[x, y, z] = A[(x + 3y) modulo 5, x, z]</p>
+            <p class="bodyText">
+                gdzie A to rejestr stanu, a A′ to wynikowy rejestr stanu.
+            </p>
+            <span class="imageWrapper">
+                <img src="SHA7.PNG">
+                <p class="caption">Ilustracja obrazująca przesunięcia linii w funckji π</p>
+            </span>
         </section>
         <section>
             <h2 class="sectionTitle">
@@ -204,11 +222,11 @@
             </h2>
             <p class="bodyText">
                 Funckja χ powoduje wykonanie na każdym bicie operacji XOR z zsumowanymi binarnie (AND) dwoma bitami sąsiednimi w jego rzędzie (bitów o tym samy koordynacie x)
-                <span class="imageWrapper">
-                    <img src="SHA8.PNG">
-                    <p class="caption">Ilustracja obrazująca działanie funckji χ</p>
-                </span>
             </p>
+            <span class="imageWrapper">
+                <img src="SHA8.PNG">
+                <p class="caption">Ilustracja obrazująca działanie funckji χ</p>
+            </span>
         </section>
         <section>
             <h2 class="sectionTitle">
@@ -216,7 +234,9 @@
             </h2>
             <p class="bodyText">
                 Funckja ι jest parametryzowana poprzez i - indeks iteracji funkcji mieszającej (dla Keccak-f[1600] przyjmuje on wartości od 0 do 23 włącznie). Funkcja ta wykonuje operacje XOR na bitach środkowej linii rejestru stanu i ośmiobitowej stałej określonej jako rc, wyznaczanej na postawie parametru i, która jest następnie modyfikawana i rozciągana do 64 bitów z wykorzystaniem wartości l, która dla Keccak-f[1600] wynosi 6, według wzoru:
-                <p class="codeBlock">RC[2j – 1] = rc(j + 7i)</p>
+            </p>
+            <p class="codeBlock">RC[2j – 1] = rc(j + 7i)</p>
+            <p class="bodyText">
                 gdziej j to indeks iteratora od 0 do l, a RC to wynikowa stała dla danego i oraz l;
             </p>
         </section>
@@ -243,14 +263,14 @@
             <p class="bodyText">
                 Jako zadanie projektowe wykonano wdrożenie rodziny funkcji hashujących SHA-3 oraz przedstawiono przykładowe ich zastosowania w aplikacji konsolowej napisanej w języku C# na platformę .NET5 (same funkcje SHA3 zostały stworzone na platformie .NET Standard 2.0).
                 Aplikacja posiada następujące funkcjonalności:
-                <ul>
-                    <li>Przestawienie krok po kroku działanie dowolnej funkcji z rodziny SHA-3 dla dowolnej wiadomości wejściowej wraz z pokazaniem stanu konstrukcji gąbki w każdym momencie</li>
-                    <li>Stworzenie oraz zwrócenie solonego skrótu hasła, przy pomocy dowolnej funkcji z rodziny SHA-3</li>
-                    <li>Weryfikacja skrótu solonego hasła przy pomocy dowolnej funkcji z rodziny SHA-3</li>
-                    <li>Sworzenie skrótu wskazanego przez użytkownika pliku przy pomocy dowolnej funkcji z rodziny SHA-3</li>
-                    <li>Weryfikacja podanego przez użytkownika skrótu wskazanego przez użytkownika pliku przy pomocy dowolnej funkcji z rodziny SHA-3</li>
-                </ul>
             </p>
+            <ul>
+                <li>Przestawienie krok po kroku działanie dowolnej funkcji z rodziny SHA-3 dla dowolnej wiadomości wejściowej wraz z pokazaniem stanu konstrukcji gąbki w każdym momencie</li>
+                <li>Stworzenie oraz zwrócenie solonego skrótu hasła, przy pomocy dowolnej funkcji z rodziny SHA-3</li>
+                <li>Weryfikacja skrótu solonego hasła przy pomocy dowolnej funkcji z rodziny SHA-3</li>
+                <li>Sworzenie skrótu wskazanego przez użytkownika pliku przy pomocy dowolnej funkcji z rodziny SHA-3</li>
+                <li>Weryfikacja podanego przez użytkownika skrótu wskazanego przez użytkownika pliku przy pomocy dowolnej funkcji z rodziny SHA-3</li>
+            </ul>
         </section>
         <section>
             <h2 class="sectionTitle">
@@ -258,11 +278,11 @@
             </h2>
             <p class="bodyText">
                 W celu implementacji oraz przetestowania rodziny funkcji SHA3 posłużono się:
-                <ul>
-                    <li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf">FEDERAL INFORMATION PROCESSING STANDARDS PUBLICATION - SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions</a></li>
-                    <li><a href="https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines/example-values">Computer Security Resource Center - Cryptographic Standards and Guidelines </a></li>
-                </ul>
             </p>
+            <ul>
+                <li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf">FEDERAL INFORMATION PROCESSING STANDARDS PUBLICATION - SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions</a></li>
+                <li><a href="https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines/example-values">Computer Security Resource Center - Cryptographic Standards and Guidelines </a></li>
+            </ul>
         </section>
     </main>
 </body>
